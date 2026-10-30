@@ -1,8 +1,9 @@
-1<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#9B8F84">
     <title>Case  Studies |  - Community-Driven Experiences</title>
     <meta name="description" content="Discover how UPTOPIA is transforming communities through curated experiences and meaningful connections.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,12 +25,18 @@
             box-sizing: border-box;
         }
 
+        /* Match browser chrome so no visible seam appears on Android */
+        html {
+            background-color: #9B8F84;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             color: #ffffff;
             background-color: var(--light);
             line-height: 1.6;
-            overflow-x: hidden;
+            /* clip (not hidden) so sticky still attaches to viewport on Android */
+            overflow-x: clip;
         }
 
         h1, h2, h3, h4 {
@@ -50,6 +57,10 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             padding: 3px 0;
             transition: padding 0.3s ease;
+
+            /* Keep pinned to compositor during Android toolbar collapse */
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .navbar.scrolled { padding: 2px 0; }
@@ -212,7 +223,7 @@
             background-color: var(--hero-bg);
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         section.hero {
@@ -1450,4 +1461,4 @@
         });
     </script>
 </body>
-    </html>
+                                    </html>
